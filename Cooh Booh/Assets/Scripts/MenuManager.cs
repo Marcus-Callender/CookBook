@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,20 +6,36 @@ namespace CoohBooh
 {
     public class MenuManager : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject[] m_menuPrefabs;
+        public static MenuManager m_instance;
 
         [SerializeField]
-        private Transform m_menuParent;
+        private List<MenuBase> m_menuPrefabs;
 
-        void Start()
+        [SerializeField]
+        private List<MenuBase> m_menuStack;
+
+        void Awake()
         {
-
+            if (m_instance == null)
+                m_instance = this;
+            else
+                Debug.LogError("MenuManager instance already existed!");
         }
 
         void Update()
         {
 
+        }
+
+        public void AddToMenuStack(MenuBase menuType)
+        {
+
+        }
+
+        public void OverideMenuStack(MenuBase menuType)
+        {
+            m_menuStack.Clear();
+            m_menuStack.Add(menuType);
         }
     }
 }
