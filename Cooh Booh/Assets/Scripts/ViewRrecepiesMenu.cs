@@ -4,9 +4,8 @@ using UnityEngine;
 
 namespace CoohBooh
 {
-    public class MenuBase : MonoBehaviour
+    public class ViewRrecepiesMenu : MenuBase
     {
-        public static MENU_TYPE m_menuType = MENU_TYPE.NULL;
 
         // Use this for initialization
         void Start()

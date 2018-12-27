@@ -16,10 +16,13 @@ namespace CoohBooh
     
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (m_overideMenuStack)
-                MenuManager.m_instance.OverideMenuStack(m_type);
-            else
-                MenuManager.m_instance.AddToMenuStack(m_type);
+            if (m_type != null)
+            {
+                if (m_overideMenuStack)
+                    MenuManager.m_instance.OverideMenuStack(m_type);
+                else
+                    MenuManager.m_instance.AddToMenuStack(m_type);
+            }
         }
     }
 }

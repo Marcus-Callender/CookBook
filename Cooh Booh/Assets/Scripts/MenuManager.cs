@@ -4,15 +4,27 @@ using UnityEngine;
 
 namespace CoohBooh
 {
+    public enum MENU_TYPE
+    {
+        HOME,
+        COOK_BOOK,
+        CALENDAR,
+        SHOPING_LIST,
+        CREATE_MENU,
+        NULL
+    }
+
     public class MenuManager : MonoBehaviour
     {
         public static MenuManager m_instance;
 
         [SerializeField]
-        private List<MenuBase> m_menuPrefabs;
+        private MenuBase[] m_menuPrefabs;
 
         [SerializeField]
         private List<MenuBase> m_menuStack;
+
+        private MenuBase currentMenu { get { return m_menuStack[m_menuStack.Count - 1]; } }
 
         void Awake()
         {
@@ -20,6 +32,8 @@ namespace CoohBooh
                 m_instance = this;
             else
                 Debug.LogError("MenuManager instance already existed!");
+
+            m_menuPrefabs = new MenuBase[(int)MENU_TYPE.NULL];
         }
 
         void Update()
@@ -27,15 +41,32 @@ namespace CoohBooh
 
         }
 
-        public void AddToMenuStack(MenuBase menuType)
+        public void AddToMenuStack(MenuBase menu)
         {
+            currentMenu.gameObject.SetActive(false);
 
+            m_menuStack.Add(menu);
+
+            currentMenu.gameObject.SetActive(true);
         }
 
-        public void OverideMenuStack(MenuBase menuType)
+        public void OverideMenuStack(MenuBase menu)
         {
+            currentMenu.gameObject.SetActive(false);
+
             m_menuStack.Clear();
-            m_menuStack.Add(menuType);
+            m_menuStack.Add(menu);
+
+            currentMenu.gameObject.SetActive(true);
+        }
+
+        public void PopMenuStack()
+        {
+            currentMenu.gameObject.SetActive(false);
+
+            m_menuStack.RemoveAt(m_menuStack.Count - 1);
+
+            currentMenu.gameObject.SetActive(true);
         }
     }
 }
