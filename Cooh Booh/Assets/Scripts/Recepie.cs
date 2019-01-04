@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Recepie : MonoBehaviour
+namespace CoohBooh
 {
     enum mesurementType
     {
@@ -27,7 +27,7 @@ public class Recepie : MonoBehaviour
 
         [SerializeField]
         public float m_time;
-    }   
+    }
 
     class RecepieIngredient
     {
@@ -41,19 +41,23 @@ public class Recepie : MonoBehaviour
         public float m_ammount;
     }
 
-    [SerializeField]
-    private RecepieStep[] m_recepieSteps;
-
-    [SerializeField]
-    private RecepieIngredient[] m_recepieIngredients;
-
-    void Start()
+    public class Recepie : MonoBehaviour
     {
 
-    }
-    
-    void Update()
-    {
+        [SerializeField]
+        private RecepieStep[] m_recepieSteps;
 
+        [SerializeField]
+        private RecepieIngredient[] m_recepieIngredients;
+
+        void Start()
+        {
+
+        }
+
+        void Update()
+        {
+
+        }
     }
 }

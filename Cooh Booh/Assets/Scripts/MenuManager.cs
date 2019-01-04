@@ -36,6 +36,11 @@ namespace CoohBooh
             m_menuPrefabs = new MenuBase[(int)MENU_TYPE.NULL];
         }
 
+        private void Start()
+        {
+            SaveLoadData.m_instance.LoadData();
+        }
+
         void Update()
         {
 
