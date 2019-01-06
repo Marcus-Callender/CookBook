@@ -7,15 +7,13 @@ namespace CoohBooh
     public class MenuBase : MonoBehaviour
     {
         public static MENU_TYPE m_menuType = MENU_TYPE.NULL;
-
-        // Use this for initialization
-        void Start()
+        
+        public void OnBecomeActive()
         {
 
         }
 
-        // Update is called once per frame
-        void Update()
+        public void OnBecomeInactive()
         {
 
         }

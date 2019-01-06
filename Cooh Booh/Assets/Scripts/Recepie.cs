@@ -50,6 +50,9 @@ namespace CoohBooh
         [SerializeField]
         private RecepieIngredient[] m_recepieIngredients;
 
+        [SerializeField]
+        public int recepieID;
+
         void Start()
         {
 

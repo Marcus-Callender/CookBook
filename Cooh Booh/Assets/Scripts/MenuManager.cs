@@ -40,38 +40,45 @@ namespace CoohBooh
         {
             SaveLoadData.m_instance.LoadData();
         }
-
-        void Update()
-        {
-
-        }
-
+        
         public void AddToMenuStack(MenuBase menu)
         {
+            currentMenu.OnBecomeInactive();
+
             currentMenu.gameObject.SetActive(false);
 
             m_menuStack.Add(menu);
 
             currentMenu.gameObject.SetActive(true);
+
+            currentMenu.OnBecomeActive();
         }
 
         public void OverideMenuStack(MenuBase menu)
         {
+            currentMenu.OnBecomeInactive();
+
             currentMenu.gameObject.SetActive(false);
 
             m_menuStack.Clear();
             m_menuStack.Add(menu);
 
             currentMenu.gameObject.SetActive(true);
+
+            currentMenu.OnBecomeActive();
         }
 
         public void PopMenuStack()
         {
+            currentMenu.OnBecomeInactive();
+
             currentMenu.gameObject.SetActive(false);
 
             m_menuStack.RemoveAt(m_menuStack.Count - 1);
 
             currentMenu.gameObject.SetActive(true);
+
+            currentMenu.OnBecomeActive();
         }
     }
 }

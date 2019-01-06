@@ -10,7 +10,7 @@ namespace CoohBooh
     {
         public void OnPointerDown(PointerEventData eventData)
         {
-
+            MenuManager.m_instance.PopMenuStack();
         }
     }
 }

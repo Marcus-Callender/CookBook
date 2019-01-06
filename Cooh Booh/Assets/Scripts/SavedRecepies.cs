@@ -22,6 +22,17 @@ namespace CoohBooh
             }
         }
 
+        // thanks Ignis
+        public void AddNewRecepie(Recepie newRecepie)
+        {
+
+        }
+
+        public void RemoveRecepie(int recepieID)
+        {
+            
+        }
+
         // Use this for initialization
         void Start()
         {
