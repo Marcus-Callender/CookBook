@@ -6,6 +6,8 @@ namespace CoohBooh
 {
     public class ViewRrecepiesMenu : MenuBase
     {
+        [SerializeField]
+        public DropDownMenu[] m_dropDownMenus;
 
         // Use this for initialization
         void Start()
@@ -17,6 +19,14 @@ namespace CoohBooh
         void Update()
         {
 
+        }
+
+        public override void OnBecomeInactive()
+        {
+            for (int z = 0; z < m_dropDownMenus.Length; z++)
+            {
+                m_dropDownMenus[z].CloseMenu();
+            }
         }
     }
 }

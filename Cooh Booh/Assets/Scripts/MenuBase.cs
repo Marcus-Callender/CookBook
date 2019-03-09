@@ -8,12 +8,12 @@ namespace CoohBooh
     {
         public static MENU_TYPE m_menuType = MENU_TYPE.NULL;
         
-        public void OnBecomeActive()
+        public virtual void OnBecomeActive()
         {
 
         }
 
-        public void OnBecomeInactive()
+        public virtual void OnBecomeInactive()
         {
 
         }
