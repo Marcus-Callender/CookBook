@@ -17,14 +17,12 @@ namespace CoohBooh
         private DateTime DisplayDate;
 
         private System.Globalization.DateTimeFormatInfo dtfi;
-
-        // Start is called before the first frame update
-        void Start()
+        
+        void Awake()
         {
             dtfi = new System.Globalization.DateTimeFormatInfo();
         }
 
-        // Update is called once per frame
         void Update()
         {
 
@@ -32,14 +30,6 @@ namespace CoohBooh
 
         public override void OnBecomeActive()
         {
-            //localDate = DateTime.Now;
-            //DateTime firstDayOfMonth = new DateTime(localDate.Year, localDate.Month, 1);
-            //int daysInMonth = System.DateTime.DaysInMonth(localDate.Year, localDate.Month);
-            
-            //Debug.Log("Date is: " + localDate.Day + "/" + localDate.Month + "/" + localDate.Year);
-            //Debug.Log("Time is: " + localDate.Hour + ":" + localDate.Minute + ":" + localDate.Second);
-            //Debug.Log("Day of week: " + localDate.DayOfWeek);
-
             DisplayDate = DateTime.Now;
             UpdateDate();
         }
@@ -47,6 +37,7 @@ namespace CoohBooh
         private void UpdateDate()
         {
             int daysInMonth = DateTime.DaysInMonth(DisplayDate.Year, DisplayDate.Month);
+            int daysInPrevMonth = DateTime.DaysInMonth(DisplayDate.Year, DisplayDate.Month - 1);
             DayOfWeek dayOfWeek = new DateTime(DisplayDate.Year, DisplayDate.Month, 1).DayOfWeek;
             
             monthYearText.text = dtfi.GetMonthName(DisplayDate.Month) + " " + DisplayDate.Year;
@@ -56,7 +47,7 @@ namespace CoohBooh
 
                 if (z < (int)dayOfWeek)
                 {
-                    tiles[z].SetDate(-1);
+                    tiles[z].SetDate(daysInPrevMonth + 1 - ((int)dayOfWeek - z));
                     tiles[z].SetInactive();
                 }
                 else if (z < (int)dayOfWeek + daysInMonth)
@@ -66,18 +57,10 @@ namespace CoohBooh
                 }
                 else if (z >= (int)dayOfWeek + daysInMonth)
                 {
-                    tiles[z].SetDate(-1);
+                    tiles[z].SetDate((z + 1 - (int)dayOfWeek) - daysInMonth);
                     tiles[z].SetInactive();
                 }
-
-
-                //tiles[z].SetInactive();
             }
-
-            /*for (int z = (int)dayOfWeek; z < (int)dayOfWeek + daysInMonth; z++)
-            {
-                tiles[z].SetActive();
-            }*/
         }
 
         public void NextMonth()
