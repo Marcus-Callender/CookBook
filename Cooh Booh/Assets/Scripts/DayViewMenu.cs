@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CoohBooh
 {
     public class DayViewMenu : MonoBehaviour
     {
+        [SerializeField]
+        private Text monthYearText;
+
         // Start is called before the first frame update
         void Start()
         {

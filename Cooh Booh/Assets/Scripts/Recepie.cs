@@ -29,10 +29,11 @@ namespace CoohBooh
         public float m_time;
     }
 
+    [System.Serializable]
     class RecepieIngredient
     {
         [SerializeField]
-        public string m_stepString;
+        public string m_ingredientName;
 
         [SerializeField]
         public mesurementType m_mesurementType;
@@ -40,8 +41,9 @@ namespace CoohBooh
         [SerializeField]
         public float m_ammount;
     }
-
-    public class Recepie : MonoBehaviour
+    
+    [System.Serializable]
+    public class Recepie
     {
 
         [SerializeField]
@@ -59,6 +61,16 @@ namespace CoohBooh
         }
 
         void Update()
+        {
+
+        }
+
+        void AddRecepieStep(string stepString, float time)
+        {
+            m_recepieSteps.add 
+        }
+
+        void AddRecepieIngredient(string ingredientName, mesurementType mesurementType, float ammount)
         {
 
         }

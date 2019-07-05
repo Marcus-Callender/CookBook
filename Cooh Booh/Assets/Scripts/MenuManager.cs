@@ -26,6 +26,9 @@ namespace CoohBooh
 
         private MenuBase currentMenu { get { return m_menuStack[m_menuStack.Count - 1]; } }
 
+        [SerializeField]
+        private static SavedRecepies m_recepies;
+
         void Awake()
         {
             if (m_instance == null)
@@ -34,6 +37,9 @@ namespace CoohBooh
                 Debug.LogError("MenuManager instance already existed!");
 
             m_menuPrefabs = new MenuBase[(int)MENU_TYPE.NULL];
+
+            //Load();
+            SaveLoadData.m_instance.LoadData();
         }
 
         private void Start()
@@ -79,6 +85,38 @@ namespace CoohBooh
             currentMenu.gameObject.SetActive(true);
 
             currentMenu.OnBecomeActive();
+        }
+        
+        /*public void Save()
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Create(Application.persistentDataPath + "/RecepieList.sav");
+            bf.Serialize(file, m_recepies);
+            file.Close();
+        }*/
+
+        /*public void Load()
+        {
+            if (File.Exists(Application.persistentDataPath + "/RecepieList.sav"))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Open(Application.persistentDataPath + "/RecepieList.sav", FileMode.Open);
+                m_recepies = (SavedRecepies)bf.Deserialize(file);
+                file.Close();
+            }
+            else
+            {
+                m_recepies = new SavedRecepies();
+                Save();
+            }
+        }*/
+
+        public void Update()
+        {
+            if (/*Input.GetKeyDown(KeyCode.LeftShift) &&*/ Input.GetKeyDown(KeyCode.S))
+            {
+                SaveLoadData.m_instance.SaveData();
+            }
         }
     }
 }

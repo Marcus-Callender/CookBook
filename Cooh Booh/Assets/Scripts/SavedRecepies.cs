@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CoohBooh
 {
-    public class SavedRecepies : MonoBehaviour
+    [System.Serializable]
+    public class SavedRecepies
     {
         [SerializeField]
-        public Recepie[] m_recepies;
+        public List<Recepie> m_recepies;
 
         private void Awake()
         {
@@ -20,12 +22,13 @@ namespace CoohBooh
             {
                 Debug.LogError("SaveLoadData already has a refrence to saved recepies");
             }
-        }
 
-        // thanks Ignis
+            m_recepies = new List<Recepie>();
+        }
+        
         public void AddNewRecepie(Recepie newRecepie)
         {
-
+            m_recepies.Add(newRecepie);
         }
 
         public void RemoveRecepie(int recepieID)

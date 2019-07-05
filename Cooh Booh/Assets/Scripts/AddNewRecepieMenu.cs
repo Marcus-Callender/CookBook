@@ -6,6 +6,8 @@ namespace CoohBooh
 {
     public class AddNewRecepieMenu : MenuBase
     {
+        [SerializeField]
+        private Recepie m_recepie;
 
         // Use this for initialization
         void Start()
@@ -18,5 +20,19 @@ namespace CoohBooh
         {
 
         }
+
+        public virtual void OnBecomeActive()
+        {
+            m_recepie.
+        }
+
+        public void Save()
+        {
+            SaveLoadData.m_instance.AddNewRecepie(m_recepie);
+
+            MenuManager.m_instance.PopMenuStack();
+        }
+
+
     }
 }
