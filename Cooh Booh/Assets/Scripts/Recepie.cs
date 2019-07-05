@@ -27,6 +27,12 @@ namespace CoohBooh
 
         [SerializeField]
         public float m_time;
+
+        public RecepieStep(string stepString, float time)
+        {
+            m_stepString = stepString;
+            m_time = time;
+        }
     }
 
     [System.Serializable]
@@ -40,6 +46,13 @@ namespace CoohBooh
 
         [SerializeField]
         public float m_ammount;
+
+        public RecepieIngredient(string ingredientName, mesurementType mesurementType, float ammount)
+        {
+            m_ingredientName = ingredientName;
+            m_mesurementType = mesurementType;
+            m_ammount = ammount;
+        }
     }
     
     [System.Serializable]
@@ -47,13 +60,19 @@ namespace CoohBooh
     {
 
         [SerializeField]
-        private RecepieStep[] m_recepieSteps;
+        private List<RecepieStep> m_recepieSteps;
 
         [SerializeField]
-        private RecepieIngredient[] m_recepieIngredients;
+        private List<RecepieIngredient> m_recepieIngredients;
 
         [SerializeField]
         public int recepieID;
+
+        public Recepie()
+        {
+            m_recepieSteps = new List<RecepieStep>();
+            m_recepieIngredients = new List<RecepieIngredient>();
+        }
 
         void Start()
         {
@@ -67,12 +86,12 @@ namespace CoohBooh
 
         void AddRecepieStep(string stepString, float time)
         {
-            m_recepieSteps.add 
+            m_recepieSteps.Add(new RecepieStep(stepString, time));
         }
 
         void AddRecepieIngredient(string ingredientName, mesurementType mesurementType, float ammount)
         {
-
+            m_recepieIngredients.Add(new RecepieIngredient(ingredientName, mesurementType, ammount));
         }
     }
 }

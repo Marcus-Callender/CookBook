@@ -21,9 +21,9 @@ namespace CoohBooh
 
         }
 
-        public virtual void OnBecomeActive()
+        public override void OnBecomeActive()
         {
-            m_recepie.
+            m_recepie = new Recepie();
         }
 
         public void Save()
