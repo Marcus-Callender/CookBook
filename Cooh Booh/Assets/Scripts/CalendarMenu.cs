@@ -44,7 +44,6 @@ namespace CoohBooh
 
             for (int z = 0; z < tiles.Length; z++)
             {
-
                 if (z < (int)dayOfWeek)
                 {
                     tiles[z].SetDate(daysInPrevMonth + 1 - ((int)dayOfWeek - z));
