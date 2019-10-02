@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CoohBooh
 {
-    public class ViewRrecepiesMenu : MenuBase
+    public class ViewRecipesMenu : MenuBase
     {
         [SerializeField]
         public DropDownMenu[] m_dropDownMenus;
